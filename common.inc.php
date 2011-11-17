@@ -1,16 +1,15 @@
-<?php 
-
+<?php
 if (!class_exists('Redis')) {
+    // TODO - error handler and view
   die('ERROR: phpredis is required. You can find phpredis at <a href="https://github.com/nicolasff/phpredis">https://github.com/nicolasff/phpredis</a>');
 }
 
-
-
-
+// TODO - helper for $_GET and $_SET parsing
+// TODO - array access helper
 // Undo magic quotes (both in keys and values)
 if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
   $process = array(&$_GET, &$_POST);
-  
+
   while (list($key, $val) = each($process)) {
     foreach ($val as $k => $v) {
       unset($process[$key][$k]);
@@ -27,22 +26,17 @@ if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
   unset($process);
 }
 
-
-
-
+// TODO - bootstrap
 // These includes are needed by each script.
 require_once 'config.inc.php';
 require_once 'functions.inc.php';
 require_once 'page.inc.php';
 
-
 if (isset($config['login'])) {
   require_once 'login.inc.php';
 }
 
-
-
-
+// TODO - extension class of Redis
 // phpredis types to string conversion array.
 $redistypes = array(
   Redis::REDIS_STRING    => 'string',
@@ -51,10 +45,6 @@ $redistypes = array(
   Redis::REDIS_ZSET      => 'zset',
   Redis::REDIS_HASH      => 'hash',
 );
-
-
-
-
 
 if (isset($login['servers'])) {
   $i = current($login['servers']);
@@ -70,7 +60,7 @@ if (isset($_GET['s']) && is_numeric($_GET['s']) && ($_GET['s'] < count($config['
 $server       = $config['servers'][$i];
 $server['id'] = $i;
 
-
+// TODO - authentication, acl helpers
 if (isset($login, $login['servers'])) {
   if (array_search($i, $login['servers']) === false) {
     die('You are not allowed to access this database.');
@@ -88,7 +78,7 @@ if (!isset($server['db'])) {
   $server['db'] = 0;
 }
 
-
+// TODO - all of this in Redis extension/helper class
 // Setup a connection to Redis.
 $redis = new Redis();
 
@@ -98,13 +88,11 @@ try {
   die('ERROR: Could not connect to Redis ('.$server['host'].':'.$server['port'].')');
 }
 
-
 if (isset($server['auth'])) {
   if (!$redis->auth($server['auth'])) {
     die('ERROR: Authentication failed ('.$server['host'].':'.$server['port'].')');
   }
 }
-
 
 if ($server['db'] != 0) {
   if (!$redis->select($server['db'])) {
