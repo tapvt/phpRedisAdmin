@@ -15,7 +15,7 @@ You can find an example database at [http://dubbelboer.com/phpRedisAdmin/](http:
 Installing/Configuring
 ======================
 
-You will need [phpredis](https://github.com/nicolasff/phpredis). See phpredis for install instructions.
+You will need [phpredis](https://github.com/nicolasff/phpredis). See phpredis [README](https://github.com/nicolasff/phpredis/blob/master/README.markdown) for install instructions.
 
 You will need to edit config.inc.php with your redis information. You might also want to uncomment and change the login information in config.inc.php.
 
