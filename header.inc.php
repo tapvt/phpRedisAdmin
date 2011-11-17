@@ -29,7 +29,8 @@ header('Cache-Control: private');
 
 <link rel="shortcut icon" href="images/favicon.png">
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
 <?php foreach ($page['js'] as $js) { ?>
 <script src="js/<?php echo $js; ?>.js?v1"></script>
