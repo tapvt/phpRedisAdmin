@@ -119,7 +119,7 @@ function print_namespace($item, $name, $fullkey, $islast) {
     </li>
     <?php
   }
-  
+
   // Does this namespace also contain subkeys?
   if (count($item) > 0) {
     ?>
@@ -157,9 +157,7 @@ require 'header.inc.php';
 
 ?>
 <div id="sidebar">
-
 <h1 class="logo"><a href="?overview&amp;s=<?php echo $server['id']?>">phpRedisAdmin</a></h1>
-
 <p>
 <select id="server">
 <?php foreach ($config['servers'] as $i => $srv) { ?>
@@ -190,12 +188,10 @@ require 'header.inc.php';
 <?php print_namespace($namespaces, 'Keys', '', empty($namespaces))?>
 </ul>
 </div><!-- #keys -->
-
+</div><!-- #sidebar -->
 <div id="frame">
 <iframe src="<?php echo format_html($iframe)?>" id="iframe" frameborder="0" scrolling="0"></iframe>
 </div><!-- #frame -->
-
-</div><!-- #sidebar -->
 <?php
 
 require 'footer.inc.php';
