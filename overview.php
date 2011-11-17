@@ -2,9 +2,6 @@
 
 require_once 'common.inc.php';
 
-
-
-
 $info = array();
 
 foreach ($config['servers'] as $i => $server) {
@@ -40,9 +37,6 @@ foreach ($config['servers'] as $i => $server) {
   $info[$i]['size'] = $redis->dbSize();
 }
 
-
-
-
 $page['css'][] = 'frame';
 $page['js'][]  = 'frame';
 
@@ -69,14 +63,13 @@ require 'header.inc.php';
   </table>
   </div>
 <?php } ?>
-
-<p class="clear">
-<a href="https://github.com/ErikDubbelboer/phpRedisAdmin" target="_blank">phpRedisAdmin on GitHub</a>
-</p>
-
-<p>
-<a href="http://redis.io/documentation" target="_blank">Redis Documentation</a>
-</p>
+<br class="clear" />
+<h3>Links:</h3>
+<ul>
+<li><a href="https://github.com/tapvt/phpRedisAdmin" target="_blank">This Fork of phpRedisAdmin on GitHub</a></li>
+<li><a href="https://github.com/ErikDubbelboer/phpRedisAdmin" target="_blank">Upstream Fork of phpRedisAdmin on GitHub</a></li>
+<li><a href="http://redis.io/documentation" target="_blank">Redis Documentation</a></li>
+</ul>
 <?php
 
 require 'footer.inc.php';
